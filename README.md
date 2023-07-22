@@ -1,44 +1,46 @@
-### ----------------------------------注:本人写的算法为MDPC---------------------------------
+### ----------------------------------The algorithm I have developed is called MDP---------------------------------
 
-代码运行请使用[Main.m](./Main.m)
+Please use the following code to execute it. [Main.m](./Main.m)
 
-## 流形数据集的实验结果		
+## Experimental results on manifold datasets.
 
-​		为验证MDPC算法的有效性，使用MDPC算法与IDPC-FA[^1]、DPCSA[^2]、FNDPC[^3]、FKNN-DPC[^4]、DPC算法[^5]对8个流形数据集[^6]及8个UCI数据集[^7]进行了对比实验，数据集的信息在表1和表2进行展示。其中IDPC-FA与DPCSA算法不需要进行设置参数在实验结果表中使用“-”表示，其余算法均在实验过程中调参得到的最优结果。其中DPC算法参数在升序排列后的所有样本间的距离集合0.1%到5%之间选取，步长为0.1%。对聚类效果的评价指标为Adjusted Mutual Information(AMI)[^8]、Adjusted Rand Index(ARI)[^8]、Fowlkes-Mallows index(FMI)[^9]三个评价指标，指标值越接近1表示聚类结果越好。
+​		To validate the effectiveness of the MDPC algorithm, comparative experiments were conducted on eight manifold datasets[^6] and 8 UCI datasets[^7] using MDPC along with IDPC-FA[^1], DPCSA[^2], FNDPC[^3], FKNN-DPC[^4], and DPC algorithms[^5]. Table 1 and Table 2 provide information about the datasets. Notably, IDPC-FA and DPCSA algorithms required no parameter settings and are represented with "-" in the experimental results table. The remaining algorithms were fine-tuned to achieve optimal results during the experimentation process.
 
-​                                                                                   表1 流形数据集
+For the DPC algorithm, parameters were selected from the distance collection among all samples in ascending order, ranging from 0.1% to 5%, with a step size of 0.1%. The evaluation metrics for clustering performance included Adjusted Mutual Information (AMI)[^8], Adjusted Rand Index (ARI)[^8], and Fowlkes-Mallows index (FMI)[^9]. A higher value of these metrics closer to 1 indicates better clustering results.
 
-| 数据集    | 样本数 | 维度 | 簇数 |
-|-----------|--------|------|------|
-| Circle    | 1897   | 2    | 3    |
-| Cmc       | 1002   | 2    | 3    |
-| Db        | 630    | 2    | 4    |
-| Jain      | 373    | 2    | 2    |
-| LineBlobs | 266    | 2    | 3    |
-| Pathbased | 300    | 2    | 3    |
-| Spiral    | 312    | 2    | 3    |
-| Sticks    | 512    | 2    | 4    |
+​                                                                                   Table 1: Manifold Datasets
 
-
-
-​                                                                                  表2 UCI数据集
-
-| 数据集       | 样本数 | 维度 | 簇数 |
-|--------------|--------|------|------|
-| Ecoli        | 336    | 8    | 8    |
-| Ionosphere   | 351    | 34   | 34   |
-| Iris         | 150    | 4    | 3    |
-| Libras       | 360    | 90   | 15   |
-| Seeds        | 210    | 7    | 3    |
-| Segmentation | 2310   | 20   | 7    |
-| WDBC         | 569    | 30   | 2    |
-| Wine         | 178    | 13   | 3    |
+| Datasets  |Sample Size| dim  | k    |
+|-----------|-----------|------|------|
+| Circle    | 1897      | 2    | 3    |
+| Cmc       | 1002      | 2    | 3    |
+| Db        | 630       | 2    | 4    |
+| Jain      | 373       | 2    | 2    |
+| LineBlobs | 266       | 2    | 3    |
+| Pathbased | 300       | 2    | 3    |
+| Spiral    | 312       | 2    | 3    |
+| Sticks    | 512       | 2    | 4    |
 
 
 
-​		使用MDPC算法与IDPC-FA、DPCSA、FNDPC、FKNN-DPC、DPC算法对8个流形数据集进行聚类，聚类效果如表3所示。表3中MDPC在Circle、Cmc、Db、Jain、Lineblobs、Spiral、Sticks数据集上得到的聚类效果的评价指标AMI、ARI、FMI均为1，达到完美聚类，在Pathbased数据集上表现也是六个算法之间的最佳。
+​                                                                                  Table 2: UCI Datasets
 
-​                                                                 表3 6种算法在流形数据集的聚类效果比较
+| Datasets     |Sample Size| dim  | k    |
+|--------------|-----------|------|------|
+| Ecoli        | 336       | 8    | 8    |
+| Ionosphere   | 351       | 34   | 34   |
+| Iris         | 150       | 4    | 3    |
+| Libras       | 360       | 90   | 15   |
+| Seeds        | 210       | 7    | 3    |
+| Segmentation | 2310      | 20   | 7    |
+| WDBC         | 569       | 30   | 2    |
+| Wine         | 178       | 13   | 3    |
+
+
+
+​		Using the MDPC algorithm along with IDPC-FA, DPCSA, FNDPC, FKNN-DPC, and DPC algorithms, clustering was performed on 8 manifold datasets. The clustering results are presented in Table 3. In Table 3, MDPC achieved perfect clustering with AMI, ARI, and FMI metrics all equal to 1 on the Circle, Cmc, Db, Jain, Lineblobs, Spiral, and Sticks datasets. Additionally, it outperformed the other six algorithms on the Pathbased dataset, showcasing the best clustering performance.
+
+​                                                                 Table 3: Clustering Performance Comparison of 6 Algorithms on Manifold Datasets
 
 | Algorithms | AMI    | ARI    | FMI    | Arg- | Algorithms | AMI        | ARI        | FMI        | Arg- |
 | ---------- | ------ | ------ | ------ | ---- | ---------- | ---------- | ---------- | ---------- | ---- |
@@ -71,8 +73,7 @@
 | FKNN-DPC   | 0.7092 | 0.8224 | 0.9359 | 43   | FKNN-DPC   | **1**      | **1**      | **1**      | 6    |
 | DPC        | 0.6183 | 0.7146 | 0.8819 | 0.8  | DPC        | 0.8094     | 0.7534     | 0.8235     | 2.1  |
 
-​		下面是MDPC、IDPC-FA、DPCSA、FNDPC、FKNN-DPC、DPC这6种算法在两种流形数据集上的聚类结果图，聚类中心在图中使用“五角星”表示，使用不同颜色表示不同类别。
-
+​		Below are the clustering results of the MDPC, IDPC-FA, DPCSA, FNDPC, FKNN-DPC, and DPC algorithms on two manifold datasets. The clustering centers are represented by "pentagrams" in the graphs, and different colors indicate different clusters.
 
 
 ***
@@ -91,7 +92,7 @@
 
 ​                                     (e) FKNN-DPC                                                                                (f) DPC
 
-​                                                              图1 6种算法在Db数据集上的聚类结果
+​                                                              Figure 1: Clustering Results of 6 Algorithms on the Db Dataset
 
 ***
 
@@ -109,7 +110,7 @@
 
 ​                                     (e) FKNN-DPC                                                                                (f) DPC
 
-​                                                             图2 6种算法在Cmc数据集上的聚类结果
+​                                                             Figure 2: Clustering Results of 6 Algorithms on the Cmc Dataset
 
 ***
 
@@ -127,7 +128,7 @@
 
 ​                                     (e) FKNN-DPC                                                                                (f) DPC
 
-​                                                             图3 6种算法在Jain数据集上的聚类结果
+​                                                             Figure 3: Clustering Results of 6 Algorithms on the Jain Dataset
 
 ***
 
@@ -145,7 +146,7 @@
 
 ​                                     (e) FKNN-DPC                                                                                (f) DPC
 
-​                                                             图4 6种算法在Circle数据集上的聚类结果
+​                                                             Figure 4: Clustering Results of 6 Algorithms on the Circle Dataset
 
 ***
 
@@ -163,13 +164,13 @@
 
 ​                                     (e) FKNN-DPC                                                                                (f) DPC
 
-​                                                             图5 6种算法在Pathbased数据集上的聚类结果
+​                                                             Figure 5: Clustering Results of 6 Algorithms on the Pathbased Dataset
 
 ***
 
 
 
-## 真实数据集的实验结果
+## Experimental Results on Real Datasets
 
 ​		为了进一步证明MDPC的可用性，使用MDPC算法与IDPC-FA、DPCSA、FNDPC、FKNN-DPC、DPC算法对UCI中8个真实数据集Ecoli、Ionosphere、Iris、Libras、Seeds、Segmentation、Wdbc、Wine进行聚类，这些数据集的信息可以从表2得知。聚类效果如表4所示。
 
